@@ -3,8 +3,8 @@ import random
 from time import sleep
 import discum
 from discum.gateway.session import guild
-channel_id='DISCORD_CHANNEL_ID'
-token='YOUR_TOKEN'
+channel_id='890243599118270474'
+token='OTA0MzE3Nzk1MTAwMTM1NDI0.YX5xkw.fUurjG-FzOYFKGuiEyJrgug0TKI'
 
 bot = discum.Client(token=token)
 
@@ -22,7 +22,7 @@ def get_members(guild_id, channel_id):
     bot.gateway.resetSession()
     return bot.gateway.session.guild(guild_id).members
 
-members = get_members('THE_DISCORD_SERVER_ID', 'DISCORD_CHANNEL_ID')
+members = get_members('890163015561932840', '890243599118270474')
 memberslist = []
 
 for memberID in members:
