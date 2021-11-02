@@ -4,7 +4,7 @@ from time import sleep
 import discum
 from discum.gateway.session import guild
 channel_id='890243599118270474'
-token='OTA0MzE3Nzk1MTAwMTM1NDI0.YX5xkw.fUurjG-FzOYFKGuiEyJrgug0TKI'
+token='826795628415549451'
 
 bot = discum.Client(token=token)
 
