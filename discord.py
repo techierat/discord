@@ -3,8 +3,8 @@ import random
 from time import sleep
 import discum
 from discum.gateway.session import guild
-channel_id='890243599118270474'
-token='826795628415549451'
+channel_id='903951269444599868'
+token='ODI2Nzk1NjI4NDE1NTQ5NDUx.YYIZpg.HHOxavwcU9_6-0TMlSdnlYb6q9E'
 
 bot = discum.Client(token=token)
 
@@ -22,7 +22,7 @@ def get_members(guild_id, channel_id):
     bot.gateway.resetSession()
     return bot.gateway.session.guild(guild_id).members
 
-members = get_members('890163015561932840', '890243599118270474')
+members = get_members('900286053565472778', '903951269444599868')
 memberslist = []
 
 for memberID in members:
@@ -60,7 +60,7 @@ while True:
             message=data[0]['quoteText']
         else:
             print(requests.status_codes)
-            message=['who dey zuzu','whats up guys', 'spap nice one', 'comrades how far', 'happy sunday', 'whats poping']
+            message=['who dey zuzu','whats up guys', 'spap nice one', 'comrades how far', 'how far', 'whats popping', 'wetin dey sup', 'WAGMI']
 
         for line in memberslist:
             for word in line.split():
