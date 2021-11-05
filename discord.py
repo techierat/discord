@@ -3,10 +3,17 @@ import random
 from time import sleep
 import discum
 from discum.gateway.session import guild
-channel_id='903951269444599868'
-token='ODI2Nzk1NjI4NDE1NTQ5NDUx.YYPPfg.ODvi7QYbxy-erG_R0QAiJ1eC3mY'
+channel_id='DISCORD_CHANNEL_ID'
+# token='YOUR_TOKEN'
+email='YOUR_DISCORD_EMAIL'
+password='YOUR_DISCORD_PASSWORD'
 
-bot = discum.Client(token=token)
+
+#to login in using you token 
+# bot = discum.Client(token=token, log=False)
+
+#to log in using your email and password
+bot = discum.Client(email=email, password=password)
 
 def close_after_fetching(resp, guild_id):
     if bot.gateway.finishedMemberFetching(guild_id):
@@ -22,30 +29,16 @@ def get_members(guild_id, channel_id):
     bot.gateway.resetSession()
     return bot.gateway.session.guild(guild_id).members
 
-members = get_members('900286053565472778', '903951269444599868')
+print('fetching member list please wait....')
+members = get_members('THE_DISCORD_SERVER_ID', 'DISCORD_CHANNEL_ID')
 memberslist = []
 
 for memberID in members:
     memberslist.append(memberID)
-    print(memberID)
 
-
-def sendMessage(token, channel_id, message):
-    try:
-        url = 'https://discord.com/api/v9/channels/{}/messages'.format(channel_id)
-        data = {"content": message}
-        header = {"authorization": token}
-
-        r = requests.post(url, data=data, headers=header)
-        if r.status_code == 200:
-            print(f'quote sent: {message} \n')
-        else:
-            print(r.raise_for_status())
-    except Exception as e:
-        print(e)
-
-    
-    sleep(random.randint(200,680))
+def send_message(channel_id, message):
+    bot.sendMessage(channel_id, message)
+    sleep(random.randint(200,490))
 
 
 
@@ -53,14 +46,13 @@ LIST=[]
 
 while True:
     try:
-        response = requests.get("https://quote-garden.herokuapp.com/api/v3/quotes/random")
+        response = requests.get("https://api.quotable.io/random?tags=technology|trading|trade|cryptocurrency|crypto|money|business")
         if response.status_code == 200:
             json_data = response.json()
-            data = json_data['data']
-            message=data[0]['quoteText']
+            message = json_data['content']
         else:
-            print(requests.status_codes)
-            message=['who dey zuzu','whats up guys', 'spap nice one', 'comrades how far', 'how far', 'whats popping', 'wetin dey sup', 'WAGMI']
+            print('something went wrong using alternative quotes \n')
+            message=['who dey zuzu','whats up guys', 'spap nice one', 'comrades how far', 'happy sunday', 'whats poping']
 
         for line in memberslist:
             for word in line.split():
@@ -71,8 +63,8 @@ while True:
         taguser=userid+message
 
         
-        sendMessage(token,channel_id,taguser)
+        send_message(channel_id, taguser)
     except Exception as e:
-        sleep(360)
+        sleep(150)
         print(e)
     
