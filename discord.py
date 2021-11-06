@@ -3,10 +3,10 @@ import random
 from time import sleep
 import discum
 from discum.gateway.session import guild
-channel_id='DISCORD_CHANNEL_ID'
+channel_id='872911192820162650'
 # token='YOUR_TOKEN'
-email='YOUR_DISCORD_EMAIL'
-password='YOUR_DISCORD_PASSWORD'
+email='ogunyemialameen@gmail.com'
+password='Pass_word1?'
 
 
 #to login in using you token 
@@ -30,7 +30,7 @@ def get_members(guild_id, channel_id):
     return bot.gateway.session.guild(guild_id).members
 
 print('fetching member list please wait....')
-members = get_members('THE_DISCORD_SERVER_ID', 'DISCORD_CHANNEL_ID')
+members = get_members('872896252638019605', '872911192820162650')
 memberslist = []
 
 for memberID in members:
@@ -67,4 +67,3 @@ while True:
     except Exception as e:
         sleep(150)
         print(e)
-    
